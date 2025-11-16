@@ -21,9 +21,6 @@
   "author": "Cody Van De Mark / Austin Willoughby",
   "license": "UNLICENSED",
   "dependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/preset-react": "^7.28.5",
-    "babel-loader": "^10.0.0",
     "bcrypt": "^6.0.0",
     "compression": "^1.8.1",
     "connect-redis": "^9.0.0",
@@ -39,6 +36,9 @@
     "underscore": "^1.13.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "babel-loader": "^10.0.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.32.0",
