@@ -2,6 +2,18 @@ const helper = require('./helper.js');
 const React = require('react');
 const {useState,useEffect} = React;
 const {createRoot} = require('react-dom/client');
+import Draggable from 'react-draggable';
+const reactDrag = require('react-draggable');
+
+// const DraggableThing = () => {
+//    return (
+//       <Draggable>
+//          <div>
+//             blaw
+//          </div>
+//       </Draggable>
+//    )
+// }
 
 const handleDomo = (e, onDomoAdded) => {
    e.preventDefault();
@@ -9,12 +21,13 @@ const handleDomo = (e, onDomoAdded) => {
 
    const name = e.target.querySelector('#domoName').value;
    const age = e.target.querySelector('#domoAge').value;
+   const height = e.target.querySelector('#domoHeight').value;
 
-   if(!name || !age){
+   if(!name || !age || !height){
       helper.handleError('all fields required');
       return false;
    }
-   helper.sendPost(e.target.action, {name,age}, onDomoAdded);
+   helper.sendPost(e.target.action, {name, age, height}, onDomoAdded);
    return false;
 };
 
@@ -31,6 +44,8 @@ const DomoForm = (props) => {
          <input id='domoName' type='text' name='name' placeholder='Domo Name'/>
          <label htmlFor='age'>Age: </label>
          <input id='domoAge' type='number' name='age' min="0"/>
+         <label htmlFor='Height'>Height in feet: </label>
+         <input id='domoHeight' type='number' name='height' min="0"/>
          <input className='makeDomoSubmit' type='submit' value="Make Domo" />
       </form>
    )
@@ -46,7 +61,7 @@ const DomoList = (props) => {
          setDomos(data.domos);
       };
       loadDomosFromServer();
-   }, [props.reloadDOmos]);
+   }, [props.reloadDomos]);
 
    if(domos.length === 0){
       return (
@@ -56,13 +71,16 @@ const DomoList = (props) => {
       );
    }
 
-   const domoNodes = domos.map(domo=> {
+   const domoNodes = domos.map(domo => {
       return (
-         <div key={domo.id} className='domo'>
-            <img src="/assets/img/domoface.jpeg" alt='domo face' className='domoFace'/>
-            <h3 className='domoName'>Name: {domo.name}</h3>
-            <h3 className='domoAge'>Age: {domo.age}</h3>
-         </div>
+         <Draggable>
+            <div key={domo.id} className='domo'>
+               <img src="/assets/img/domoface.jpeg" alt='domo face' className='domoFace'/>
+               <h3 className='domoName'>Name: {domo.name}</h3>
+               <h3 className='domoAge'>Age: {domo.age}</h3>
+               <h3 className='domoHeight'>Height: {domo.height}</h3>
+            </div>
+         </Draggable>
       );
    });
 
