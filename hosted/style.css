@@ -8,7 +8,7 @@ html, body {
 
 #logo {
     height: 40px;
-    width: 40;
+    width: 40px;
     padding-top: 5px;
     float:left;
     border-radius: 8px;
@@ -50,7 +50,7 @@ nav:nth-child(1) {
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
-    width: 700px;
+    width: 900px;
     margin-top:0px;
     padding-top:10px;
     background-color: #55acee;
@@ -63,12 +63,7 @@ nav:nth-child(1) {
     width: 75px;
     margin-left: 10px;
     font-size: 1.2em;
-    float: left;
     color: white;
-}
-
-.domoForm input[type=text] {
-    float:left;
 }
 
 .makeDomoSubmit {
@@ -81,12 +76,7 @@ nav:nth-child(1) {
     text-decoration: none;
 }
 
-.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
-    color: white;
-}
-
 .makeDomoSubmit:hover {
-    transition: background-color 0.4s ease;
     background-color: #338acc;
 }
 
@@ -117,21 +107,15 @@ nav:nth-child(1) {
     margin: 0 auto;
     margin-top: 14px;
     font-size: 1.2em;
-    width: 100px;
+    width: 200px;
     background-color: #55acee;
     border-radius: 2px;
     border-color: #66acee;
     padding: 3px 0px;
     color: white;
-    text-decoration: none;
-}
-
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
 }
 
 .formSubmit:hover {
-    transition: background-color 0.4s ease;
     background-color: #338acc;
 }
 
@@ -187,8 +171,6 @@ nav:nth-child(1) {
     margin-left: 135px;
     height: 450px;
     width: 300px;
-    -ms-transform: rotate(330deg);
-    -webkit-transform: rotate(330deg); 
     transform: rotate(330deg);
 }
 
@@ -199,25 +181,32 @@ nav:nth-child(1) {
     border-radius: 4px;
     margin: 0 auto;
     margin-top: 100px;
+    padding-bottom: 200px;
+    position: relative;
+}
+
+/* ----------- DRAGGABLE DOMO FIXES BELOW ----------- */
+
+.domoList {
+    position: relative;    
+    min-height: 300px;
 }
 
 .domo {
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    position: absolute;     
+    cursor: grab;
+    width: 90%;
+    left: 5%;               /* center them initially */
     border: 2px solid #55acee;
     border-radius: 4px;
     background-color: #55acee;
     padding: 10px;
-    min-height:60px;
-    overflow: hidden;
+    min-height: 60px;
+    transition: border-color 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 .domo:hover {
-    transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
-    transition: background-color 2.6s ease-out;
     background-color: #66bfff;
 }
 
@@ -240,7 +229,6 @@ h3.emptyDomo {
 }
 
 h3.domoName {
-    float:left;
     width: 200px;
     font-weight: bold;
     padding-left: 65px;
@@ -248,7 +236,6 @@ h3.domoName {
 }
 
 h3.domoAge {
-    float:right;
     text-align: left;
     width: 100px;
     font-weight: bold;
@@ -256,10 +243,10 @@ h3.domoAge {
     font-size: 1.5em;
 }
 
-.domo:first-child {
-    margin-top: 10px;
-}
-
-.domo:last-child {
-    margin-bottom:10px;
+h3.domoHeight {
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
 }

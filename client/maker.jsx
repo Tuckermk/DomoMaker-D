@@ -3,17 +3,6 @@ const React = require('react');
 const {useState,useEffect} = React;
 const {createRoot} = require('react-dom/client');
 import Draggable from 'react-draggable';
-const reactDrag = require('react-draggable');
-
-// const DraggableThing = () => {
-//    return (
-//       <Draggable>
-//          <div>
-//             blaw
-//          </div>
-//       </Draggable>
-//    )
-// }
 
 const handleDomo = (e, onDomoAdded) => {
    e.preventDefault();
@@ -44,7 +33,7 @@ const DomoForm = (props) => {
          <input id='domoName' type='text' name='name' placeholder='Domo Name'/>
          <label htmlFor='age'>Age: </label>
          <input id='domoAge' type='number' name='age' min="0"/>
-         <label htmlFor='Height'>Height in feet: </label>
+         <label htmlFor='Height'>Height: </label>
          <input id='domoHeight' type='number' name='height' min="0"/>
          <input className='makeDomoSubmit' type='submit' value="Make Domo" />
       </form>
@@ -73,12 +62,12 @@ const DomoList = (props) => {
 
    const domoNodes = domos.map(domo => {
       return (
-         <Draggable>
-            <div key={domo.id} className='domo'>
-               <img src="/assets/img/domoface.jpeg" alt='domo face' className='domoFace'/>
-               <h3 className='domoName'>Name: {domo.name}</h3>
-               <h3 className='domoAge'>Age: {domo.age}</h3>
-               <h3 className='domoHeight'>Height: {domo.height}</h3>
+         <Draggable key={domo._id}> 
+            <div className="domo">
+            <img src="/assets/img/domoface.jpeg" alt='domo face' className='domoFace'/>
+            <h3 className='domoName'>Name: {domo.name}</h3>
+            <h3 className='domoAge'>Age: {domo.age}</h3>
+            <h3 className='domoHeight'>Height: {domo.height}</h3>
             </div>
          </Draggable>
       );

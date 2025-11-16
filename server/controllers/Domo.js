@@ -6,7 +6,7 @@ const makerPage = async (req, res) => res.render('app');
 
 const makeDomo = async (req, res) => {
   if (!req.body.name || !req.body.age || !req.body.height) {
-    return res.status(400).json({ error: 'name age & heigth are all required' });
+    return res.status(400).json({ error: 'name age & height are all required' });
   }
 
   const domoData = {
@@ -31,7 +31,7 @@ const makeDomo = async (req, res) => {
 const getDomos = async (req, res) => {
   try {
     const query = { owner: req.session.account._id };
-    const docs = await Domo.find(query).select('name age').lean().exec();
+    const docs = await Domo.find(query).select('name age height').lean().exec();
 
     return res.json({ domos: docs });
   } catch (err) {

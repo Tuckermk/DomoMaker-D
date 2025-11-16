@@ -7,6 +7,7 @@ const handleError = (message) => {
    entries in the response JSON object, and will handle them appropriately.
 */
 const sendPost = async (url, data, handler) => {
+  console.log(data);
   const response = await fetch(url, {
     method: 'POST',
     headers: {
