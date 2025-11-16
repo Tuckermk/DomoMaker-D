@@ -30,7 +30,8 @@
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
     "mongoose": "^8.19.3",
-    "react-draggable": "^4.5.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "redis": "^5.9.0",
     "serve-favicon": "^2.5.1",
     "underscore": "^1.13.7"
