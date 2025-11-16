@@ -23,38 +23,11 @@ const login = (req, res) => {
     return res.json({ redirect: '/maker' });
   });
 };
-const signup = async (req, res) => {
-  const username = `${req.body.username}`;
-  const pass = `${req.body.pass}`;
-  const pass2 = `${req.body.pass2}`;
 
-  if (!username || !pass || !pass2) {
-    return res.status(400).json({ error: 'all fields required!' });
-  }
-  if (pass !== pass2) {
-    return res.status(400).json({ error: 'passwords dont match' });
-  }
-
-  try {
-    const hash = await Account.generateHash(pass);
-    const newAccount = new Account({ username, password: hash });
-    await newAccount.save();
-    req.session.account = Account.toAPI(newAccount);
-    return res.json({ redirect: '/maker' });
-  } catch (err) {
-    console.log(err);
-    if (err.code === 111000) {
-      return res.status(400).json({ error: 'Username in use' });
-    }
-
-    return res.status(500).json({ error: 'error occured' });
-  }
-};
 module.exports = {
   loginPage,
   signupPage,
   login,
   logout,
-  signup,
 
 };
